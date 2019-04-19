@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Productlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Add product</h1>
+	<div class="container">
+		<div class="col-md-4">
+		<form th:object="${product}" th:action="@{save}" action="#" method="post">
+		  	<label for="fname">Product Name</label>
+			<input type="text" id="pname" th:field="*{productName}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="lname">Category Name</label>
+			<input type="text" id="cname" th:field="*{CategoryName}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="email">Email</label>
+			<input type="text" th:field="*{email}" class="form-control"/>
+
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="deplist">Category</label>
+			 <select id="deplist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+			
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
